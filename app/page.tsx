@@ -105,10 +105,18 @@ interface UnifiedReport {
   recommendations: string[]
 }
 
+interface AgentResponseResult {
+  architectureOverview: ArchitectureOverview
+  costBreakdown: CostBreakdown
+  projections: Projections
+  recommendations: string[]
+}
+
 interface APIResponse {
   status: string
-  unifiedReport: UnifiedReport
-  metadata: {
+  result?: AgentResponseResult
+  unifiedReport?: UnifiedReport
+  metadata?: {
     managerAgent: string
     timestamp: string
   }
@@ -587,12 +595,29 @@ export default function CreditCalculator() {
 
       if (data.success) {
         const agentResponse = data.response
-        if (
-          agentResponse &&
-          typeof agentResponse === 'object' &&
-          agentResponse.unifiedReport
-        ) {
-          setResponse(agentResponse)
+
+        // Extract the actual report data from the agent response
+        let reportData: AgentResponseResult | null = null
+
+        if (agentResponse?.result) {
+          // Response is in the format: { status, result: { architectureOverview, costBreakdown, ... } }
+          reportData = agentResponse.result
+        } else if (agentResponse?.unifiedReport) {
+          // Fallback format
+          reportData = agentResponse.unifiedReport
+        }
+
+        if (reportData && reportData.architectureOverview && reportData.costBreakdown && reportData.projections) {
+          // Format response to match APIResponse interface
+          const formattedResponse: APIResponse = {
+            status: 'success',
+            result: reportData,
+            metadata: agentResponse?.metadata || {
+              managerAgent: 'Credit Calculator Manager',
+              timestamp: new Date().toISOString(),
+            },
+          }
+          setResponse(formattedResponse)
           // Scroll to results
           setTimeout(() => {
             contentRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -807,7 +832,7 @@ export default function CreditCalculator() {
                 </h2>
                 <p className="text-gray-600 mt-1">
                   Generated on{' '}
-                  {new Date(response.metadata.timestamp).toLocaleDateString()}
+                  {new Date(response.metadata?.timestamp || new Date().toISOString()).toLocaleDateString()}
                 </p>
               </div>
               <Button
@@ -823,20 +848,20 @@ export default function CreditCalculator() {
 
             {/* Architecture Panel */}
             <ArchitecturePanel
-              overview={response.unifiedReport.architectureOverview}
+              overview={(response.result || response.unifiedReport)!.architectureOverview}
             />
 
             {/* Cost Breakdown */}
             <CostBreakdownTable
-              costBreakdown={response.unifiedReport.costBreakdown}
+              costBreakdown={(response.result || response.unifiedReport)!.costBreakdown}
             />
 
             {/* Metric Cards */}
-            <MetricCards projections={response.unifiedReport.projections} />
+            <MetricCards projections={(response.result || response.unifiedReport)!.projections} />
 
             {/* Recommendations */}
             <RecommendationsPanel
-              recommendations={response.unifiedReport.recommendations}
+              recommendations={(response.result || response.unifiedReport)!.recommendations}
             />
 
             {/* Action Buttons */}
@@ -887,8 +912,9 @@ export default function CreditCalculator() {
 
 // Helper functions for PDF/summary export
 function generateSummary(response: APIResponse): string {
-  const { unifiedReport } = response
-  const { architectureOverview, costBreakdown, projections } = unifiedReport
+  const reportData = response.result || response.unifiedReport
+  if (!reportData) return ''
+  const { architectureOverview, costBreakdown, projections, recommendations } = reportData
 
   const lines = [
     'LYZR CREDIT CALCULATOR - COST ESTIMATION SUMMARY',
@@ -921,9 +947,9 @@ function generateSummary(response: APIResponse): string {
     '',
     'RECOMMENDATIONS',
     '-'.repeat(30),
-    ...unifiedReport.recommendations.map((rec, idx) => `${idx + 1}. ${rec}`),
+    ...recommendations.map((rec, idx) => `${idx + 1}. ${rec}`),
     '',
-    `Generated: ${new Date(response.metadata.timestamp).toISOString()}`,
+    `Generated: ${new Date(response.metadata?.timestamp || new Date().toISOString()).toISOString()}`,
   ]
 
   return lines.filter(Boolean).join('\n')
