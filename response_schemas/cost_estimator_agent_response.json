@@ -1,0 +1,87 @@
+{
+  "agent_name": "Cost Estimator Agent",
+  "agent_id": "695bb5766363be71980ee69b",
+  "agent_purpose": "calculator",
+  "description": "Returns itemized cost breakdown including creation costs, runtime costs, model costs, and projections for monthly/annual usage",
+  "response_schema": {
+    "creationCosts": {
+      "agents": "number",
+      "sessions": "number",
+      "kb": "number",
+      "rai": "number",
+      "tools": "number"
+    },
+    "runtimeCostsPerQuery": {
+      "kbRetrieval": "number",
+      "apiLight": "number",
+      "rai": "number",
+      "memory": "number"
+    },
+    "modelCostsPerQuery": {
+      "inputCost": "number",
+      "outputCost": "number",
+      "model": "string"
+    },
+    "estimatedMonthlyQueries": "number",
+    "monthlyTotalCost": "number",
+    "annualTotalCost": "number",
+    "costPerSession": "number",
+    "costPerQuery": "number",
+    "breakdown": "string"
+  },
+  "example_response": {
+    "creationCosts": {
+      "agents": 0.05,
+      "sessions": 250,
+      "kb": 50,
+      "rai": 0,
+      "tools": 0.2
+    },
+    "runtimeCostsPerQuery": {
+      "kbRetrieval": 0.05,
+      "apiLight": 0.15,
+      "rai": 0,
+      "memory": 0.005
+    },
+    "modelCostsPerQuery": {
+      "inputCost": 0.000125,
+      "outputCost": 0.0004,
+      "model": "GPT-5 Mini"
+    },
+    "estimatedMonthlyQueries": 15000,
+    "monthlyTotalCost": 321.8625,
+    "annualTotalCost": 3862.35,
+    "costPerSession": 0.0643725,
+    "costPerQuery": 0.0214575,
+    "breakdown": "Creation costs include 1 agent ($0.05), 5000 sessions ($250), 50MB KB ($50), 2 tools ($0.20). No RAI specified. Runtime per query includes KB Retrieval ($0.05), 3 API Light calls ($0.15 total), memory ($0.005). Model costs for GPT-5 Mini are $0.25 per 1M input tokens and $2 per 1M output tokens. Each query uses 500 input and 200 output tokens, costing $0.000125 and $0.0004 respectively. With 5000 sessions and 3 queries per session, there are 15,000 monthly queries. Monthly total cost combines creation costs and (runtime+model) costs across all queries. Annual total multiplies monthly by 12. Cost per session divides monthly total by session count; cost per query divides monthly total by query count."
+  },
+  "is_actual_tested": true,
+  "actual_test_response": {
+    "creationCosts": {
+      "agents": 0.05,
+      "sessions": 250,
+      "kb": 50,
+      "rai": 0,
+      "tools": 0.2
+    },
+    "runtimeCostsPerQuery": {
+      "kbRetrieval": 0.05,
+      "apiLight": 0.15,
+      "rai": 0,
+      "memory": 0.005
+    },
+    "modelCostsPerQuery": {
+      "inputCost": 0.000125,
+      "outputCost": 0.0004,
+      "model": "GPT-5 Mini"
+    },
+    "estimatedMonthlyQueries": 15000,
+    "monthlyTotalCost": 321.8625,
+    "annualTotalCost": 3862.35,
+    "costPerSession": 0.0643725,
+    "costPerQuery": 0.0214575,
+    "breakdown": "Creation costs include 1 agent ($0.05), 5000 sessions ($250), 50MB KB ($50), 2 tools ($0.20). No RAI specified. Runtime per query includes KB Retrieval ($0.05), 3 API Light calls ($0.15 total), memory ($0.005). Model costs for GPT-5 Mini are $0.25 per 1M input tokens and $2 per 1M output tokens. Each query uses 500 input and 200 output tokens, costing $0.000125 and $0.0004 respectively. With 5000 sessions and 3 queries per session, there are 15,000 monthly queries. Monthly total cost combines creation costs and (runtime+model) costs across all queries. Annual total multiplies monthly by 12. Cost per session divides monthly total by session count; cost per query divides monthly total by query count."
+  },
+  "test_timestamp": "2026-01-05T12:58:59.559112",
+  "test_passed": false
+}

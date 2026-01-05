@@ -1,0 +1,35 @@
+{
+  "agent_name": "Architecture Analyzer Agent",
+  "agent_id": "695bb56fa45696ac999e29ae",
+  "test_message": "Analyze the architecture for a customer support chatbot that handles email inquiries using RAG with a knowledge base of company policies. Expected monthly sessions: 5000, average queries per session: 3, model tier: GPT-5 Mini",
+  "expected_purpose": "analyzer",
+  "timestamp": "2026-01-05T12:58:52.041153",
+  "is_valid_json": true,
+  "validation_errors": [
+    "Missing 'status' field",
+    "Missing 'result' field",
+    "Missing 'metadata' field (optional but recommended)"
+  ],
+  "actual_response": {
+    "agentCount": 2,
+    "agentTypes": [
+      "manager",
+      "retrieval-augmented generation (RAG) subagent"
+    ],
+    "orchestrationPattern": "manager-subagent",
+    "kbRequired": true,
+    "kbEstimatedSizeMB": 200,
+    "toolsNeeded": [
+      "email integration/API",
+      "knowledge base retrieval engine (e.g., Elasticsearch, Pinecone)"
+    ],
+    "estimatedSessionsPerMonth": 5000,
+    "apiCallsPerSession": 4,
+    "recommendedModels": [
+      "GPT-5 Mini"
+    ],
+    "complexityScore": 6,
+    "rationale": "A manager agent coordinates email intake and dispatches queries to a RAG-enabled subagent that retrieves relevant company policy content. RAG requires a structured and searchable knowledge base (estimated at 200MB for comprehensive policies). Each session likely includes an initial intake, retrieval call, model inference, and follow-up confirmation, averaging 4 API calls. Integrated email tools and vector search/retrieval backends are essential. The chosen GPT-5 Mini tier matches the complexity and scope of the task."
+  },
+  "raw_response": "{\n  \"agentCount\": 2,\n  \"agentTypes\": [\"manager\", \"retrieval-augmented generation (RAG) subagent\"],\n  \"orchestrationPattern\": \"manager-subagent\",\n  \"kbRequired\": true,\n  \"kbEstimatedSizeMB\": 200,\n  \"toolsNeeded\": [\"email integration/API\", \"knowledge base retrieval engine (e.g., Elasticsearch, Pinecone)\"],\n  \"estimatedSessionsPerMonth\": 5000,\n  \"apiCallsPerSession\": 4,\n  \"recommendedModels\": [\"GPT-5 Mini\"],\n  \"complexityScore\": 6,\n  \"rationale\": \"A manager agent coordinates email intake and dispatches queries to a RAG-enabled subagent that retrieves relevant company policy content. RAG requires a structured and searchable knowledge base (estimated at 200MB for comprehensive policies). Each session likely includes an initial intake, retrieval call, model inference, and follow-up confirmation, averaging 4 API calls. Integrated email tools and vector search/retrieval backends are essential. The chosen GPT-5 Mini tier matches the complexity and scope of the task.\"\n}"
+}

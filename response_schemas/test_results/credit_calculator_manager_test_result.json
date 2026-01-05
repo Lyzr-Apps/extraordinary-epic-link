@@ -1,0 +1,81 @@
+{
+  "agent_name": "Credit Calculator Manager",
+  "agent_id": "695bb57dc2dad05ba69ad552",
+  "test_message": "Calculate credits for a multi-agent research system: problem statement is 'Build an AI research assistant that coordinates web search, document analysis, and synthesis'. Expected 2000 monthly sessions, 4 queries per session, GPT-5 model tier",
+  "expected_purpose": "manager",
+  "timestamp": "2026-01-05T12:59:32.442033",
+  "is_valid_json": true,
+  "validation_errors": [
+    "Missing 'result' field"
+  ],
+  "actual_response": {
+    "status": "success",
+    "unifiedReport": {
+      "architectureOverview": {
+        "agentCount": 3,
+        "agentTypes": [
+          "Manager Agent",
+          "Web Search Subagent",
+          "Document Analysis Subagent",
+          "Synthesis Subagent"
+        ],
+        "orchestrationPattern": "Manager-Subagent",
+        "kbRequired": true,
+        "kbEstimatedSizeMB": 500,
+        "toolsNeeded": [
+          "Web Search API",
+          "Document Parsing/Analysis Tool",
+          "Summarization/Knowledge Graph Tool"
+        ],
+        "estimatedSessionsPerMonth": 2000,
+        "apiCallsPerSession": 4,
+        "recommendedModels": [
+          "GPT-5"
+        ],
+        "complexityScore": 8
+      },
+      "costBreakdown": {
+        "creationCosts": {
+          "agents": 4,
+          "sessions": 2000,
+          "kb": 1,
+          "rai": 0,
+          "tools": 3
+        },
+        "runtimeCostsPerQuery": {
+          "kbRetrieval": 0.05,
+          "apiLight": 0.05,
+          "rai": 0,
+          "memory": 0.005
+        },
+        "modelCostsPerQuery": {
+          "inputCost": 0.00125,
+          "outputCost": 0.01,
+          "model": "GPT-5"
+        },
+        "monthlyTotalCost": 97.62,
+        "annualTotalCost": 1171.44,
+        "costPerSession": 0.04881,
+        "costPerQuery": 0.0122
+      },
+      "projections": {
+        "estimatedMonthlyQueries": 8000,
+        "estimatedAnnualQueries": 96000,
+        "monthlyTotalCost": 97.62,
+        "annualTotalCost": 1171.44
+      },
+      "recommendations": [
+        "Proceed with modular Manager-Subagent pattern for scalability and clarity.",
+        "Leverage GPT-5 for high-quality synthesis and reasoning; costs are reasonable given model power.",
+        "Consider knowledge base optimizations if ongoing usage or storage increases beyond 500MB.",
+        "Monitor session/query utilization to optimize runtime costs.",
+        "Periodic review of tool/API usage for cost effectiveness and substitution possibilities if APIs become costlier."
+      ]
+    },
+    "metadata": {
+      "managerAgent": "Credit Calculator Manager",
+      "timestamp": "2024-06-11T18:23:12.225Z"
+    }
+  },
+  "raw_response": "{\n  \"status\": \"success\",\n  \"unifiedReport\": {\n    \"architectureOverview\": {\n      \"agentCount\": 3,\n      \"agentTypes\": [\n        \"Manager Agent\",\n        \"Web Search Subagent\",\n        \"Document Analysis Subagent\",\n        \"Synthesis Subagent\"\n      ],\n      \"orchestrationPattern\": \"Manager-Subagent\",\n      \"kbRequired\": true,\n      \"kbEstimatedSizeMB\": 500,\n      \"toolsNeeded\": [\n        \"Web Search API\",\n        \"Document Parsing/Analysis Tool\",\n        \"Summarization/Knowledge Graph Tool\"\n      ],\n      \"estimatedSessionsPerMonth\": 2000,\n      \"apiCallsPerSession\": 4,\n      \"recommendedModels\": [\n        \"GPT-5\"\n      ],\n      \"complexityScore\": 8\n    },\n    \"costBreakdown\": {\n      \"creationCosts\": {\n        \"agents\": 4,\n        \"sessions\": 2000,\n        \"kb\": 1,\n        \"rai\": 0,\n        \"tools\": 3\n      },\n      \"runtimeCostsPerQuery\": {\n        \"kbRetrieval\": 0.05,\n        \"apiLight\": 0.05,\n        \"rai\": 0,\n        \"memory\": 0.005\n      },\n      \"modelCostsPerQuery\": {\n        \"inputCost\": 0.00125,\n        \"outputCost\": 0.01,\n        \"model\": \"GPT-5\"\n      },\n      \"monthlyTotalCost\": 97.62,\n      \"annualTotalCost\": 1171.44,\n      \"costPerSession\": 0.04881,\n      \"costPerQuery\": 0.0122\n    },\n    \"projections\": {\n      \"estimatedMonthlyQueries\": 8000,\n      \"estimatedAnnualQueries\": 96000,\n      \"monthlyTotalCost\": 97.62,\n      \"annualTotalCost\": 1171.44\n    },\n    \"recommendations\": [\n      \"Proceed with modular Manager-Subagent pattern for scalability and clarity.\",\n      \"Leverage GPT-5 for high-quality synthesis and reasoning; costs are reasonable given model power.\",\n      \"Consider knowledge base optimizations if ongoing usage or storage increases beyond 500MB.\",\n      \"Monitor session/query utilization to optimize runtime costs.\",\n      \"Periodic review of tool/API usage for cost effectiveness and substitution possibilities if APIs become costlier.\"\n    ]\n  },\n  \"metadata\": {\n    \"managerAgent\": \"Credit Calculator Manager\",\n    \"timestamp\": \"2024-06-11T18:23:12.225Z\"\n  }\n}"
+}

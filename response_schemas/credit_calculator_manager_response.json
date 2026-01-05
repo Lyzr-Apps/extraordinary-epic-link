@@ -1,0 +1,207 @@
+{
+  "agent_name": "Credit Calculator Manager",
+  "agent_id": "695bb57dc2dad05ba69ad552",
+  "agent_purpose": "manager",
+  "description": "Returns comprehensive unified report combining architecture overview and cost analysis with recommendations and projections",
+  "response_schema": {
+    "status": "string",
+    "unifiedReport": {
+      "architectureOverview": {
+        "agentCount": "number",
+        "agentTypes": [
+          "string"
+        ],
+        "orchestrationPattern": "string",
+        "kbRequired": "boolean",
+        "kbEstimatedSizeMB": "number",
+        "toolsNeeded": [
+          "string"
+        ],
+        "estimatedSessionsPerMonth": "number",
+        "apiCallsPerSession": "number",
+        "recommendedModels": [
+          "string"
+        ],
+        "complexityScore": "number"
+      },
+      "costBreakdown": {
+        "creationCosts": {
+          "agents": "number",
+          "sessions": "number",
+          "kb": "number",
+          "rai": "number",
+          "tools": "number"
+        },
+        "runtimeCostsPerQuery": {
+          "kbRetrieval": "number",
+          "apiLight": "number",
+          "rai": "number",
+          "memory": "number"
+        },
+        "modelCostsPerQuery": {
+          "inputCost": "number",
+          "outputCost": "number",
+          "model": "string"
+        },
+        "monthlyTotalCost": "number",
+        "annualTotalCost": "number",
+        "costPerSession": "number",
+        "costPerQuery": "number"
+      },
+      "projections": {
+        "estimatedMonthlyQueries": "number",
+        "estimatedAnnualQueries": "number",
+        "monthlyTotalCost": "number",
+        "annualTotalCost": "number"
+      },
+      "recommendations": [
+        "string"
+      ]
+    },
+    "metadata": {
+      "managerAgent": "string",
+      "timestamp": "string"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "unifiedReport": {
+      "architectureOverview": {
+        "agentCount": 3,
+        "agentTypes": [
+          "Manager Agent",
+          "Web Search Subagent",
+          "Document Analysis Subagent",
+          "Synthesis Subagent"
+        ],
+        "orchestrationPattern": "Manager-Subagent",
+        "kbRequired": true,
+        "kbEstimatedSizeMB": 500,
+        "toolsNeeded": [
+          "Web Search API",
+          "Document Parsing/Analysis Tool",
+          "Summarization/Knowledge Graph Tool"
+        ],
+        "estimatedSessionsPerMonth": 2000,
+        "apiCallsPerSession": 4,
+        "recommendedModels": [
+          "GPT-5"
+        ],
+        "complexityScore": 8
+      },
+      "costBreakdown": {
+        "creationCosts": {
+          "agents": 4,
+          "sessions": 2000,
+          "kb": 1,
+          "rai": 0,
+          "tools": 3
+        },
+        "runtimeCostsPerQuery": {
+          "kbRetrieval": 0.05,
+          "apiLight": 0.05,
+          "rai": 0,
+          "memory": 0.005
+        },
+        "modelCostsPerQuery": {
+          "inputCost": 0.00125,
+          "outputCost": 0.01,
+          "model": "GPT-5"
+        },
+        "monthlyTotalCost": 97.62,
+        "annualTotalCost": 1171.44,
+        "costPerSession": 0.04881,
+        "costPerQuery": 0.0122
+      },
+      "projections": {
+        "estimatedMonthlyQueries": 8000,
+        "estimatedAnnualQueries": 96000,
+        "monthlyTotalCost": 97.62,
+        "annualTotalCost": 1171.44
+      },
+      "recommendations": [
+        "Proceed with modular Manager-Subagent pattern for scalability and clarity.",
+        "Leverage GPT-5 for high-quality synthesis and reasoning; costs are reasonable given model power.",
+        "Consider knowledge base optimizations if ongoing usage or storage increases beyond 500MB.",
+        "Monitor session/query utilization to optimize runtime costs.",
+        "Periodic review of tool/API usage for cost effectiveness and substitution possibilities if APIs become costlier."
+      ]
+    },
+    "metadata": {
+      "managerAgent": "Credit Calculator Manager",
+      "timestamp": "2024-06-11T18:23:12.225Z"
+    }
+  },
+  "is_actual_tested": true,
+  "actual_test_response": {
+    "status": "success",
+    "unifiedReport": {
+      "architectureOverview": {
+        "agentCount": 3,
+        "agentTypes": [
+          "Manager Agent",
+          "Web Search Subagent",
+          "Document Analysis Subagent",
+          "Synthesis Subagent"
+        ],
+        "orchestrationPattern": "Manager-Subagent",
+        "kbRequired": true,
+        "kbEstimatedSizeMB": 500,
+        "toolsNeeded": [
+          "Web Search API",
+          "Document Parsing/Analysis Tool",
+          "Summarization/Knowledge Graph Tool"
+        ],
+        "estimatedSessionsPerMonth": 2000,
+        "apiCallsPerSession": 4,
+        "recommendedModels": [
+          "GPT-5"
+        ],
+        "complexityScore": 8
+      },
+      "costBreakdown": {
+        "creationCosts": {
+          "agents": 4,
+          "sessions": 2000,
+          "kb": 1,
+          "rai": 0,
+          "tools": 3
+        },
+        "runtimeCostsPerQuery": {
+          "kbRetrieval": 0.05,
+          "apiLight": 0.05,
+          "rai": 0,
+          "memory": 0.005
+        },
+        "modelCostsPerQuery": {
+          "inputCost": 0.00125,
+          "outputCost": 0.01,
+          "model": "GPT-5"
+        },
+        "monthlyTotalCost": 97.62,
+        "annualTotalCost": 1171.44,
+        "costPerSession": 0.04881,
+        "costPerQuery": 0.0122
+      },
+      "projections": {
+        "estimatedMonthlyQueries": 8000,
+        "estimatedAnnualQueries": 96000,
+        "monthlyTotalCost": 97.62,
+        "annualTotalCost": 1171.44
+      },
+      "recommendations": [
+        "Proceed with modular Manager-Subagent pattern for scalability and clarity.",
+        "Leverage GPT-5 for high-quality synthesis and reasoning; costs are reasonable given model power.",
+        "Consider knowledge base optimizations if ongoing usage or storage increases beyond 500MB.",
+        "Monitor session/query utilization to optimize runtime costs.",
+        "Periodic review of tool/API usage for cost effectiveness and substitution possibilities if APIs become costlier."
+      ]
+    },
+    "metadata": {
+      "managerAgent": "Credit Calculator Manager",
+      "timestamp": "2024-06-11T18:23:12.225Z"
+    }
+  },
+  "test_timestamp": "2026-01-05T12:59:32.443373",
+  "test_passed": false
+}
